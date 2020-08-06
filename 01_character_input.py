@@ -1,7 +1,7 @@
-#Create a program that asks the user to enter their name and their age.
-#Print out a message addressed to them that tells them the year that they will turn 100 years old.
+# Create a program that asks the user to enter their name and their age.
+# Print out a message addressed to them that tells them the year that they will turn 100 years old.
 
-name = input("Say me your name: ")
+name = input("Say me your name: ").capitalize()
 while True:
     try:
         age = int(input("Say me your age: "))
