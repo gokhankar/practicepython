@@ -10,9 +10,9 @@ def get_number(function_text="Gimme number"):
 
 
 def create_fibo():
-    for i in range(3, fibo_number):
+    for i in range(2, fibo_number):
         if len(fibo_list) < fibo_number:
-            new_number = fibo_list[i - 3] + fibo_list[i - 2]
+            new_number = fibo_list[i - 2] + fibo_list[i - 1]
             fibo_list.append(new_number)
         elif len(fibo_list) == fibo_number:
             break
