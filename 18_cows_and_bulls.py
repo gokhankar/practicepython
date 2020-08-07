@@ -30,9 +30,9 @@ def cows_and_bulls():
     cows, bulls = 0, 0
     for i in range(0, 4):
         if guess_list[i] == my_list[i]:
-            cows += 1
-        elif guess_list[i] in my_list:
             bulls += 1
+        elif guess_list[i] in my_list:
+            cows += 1
     print(f"cows={cows} and bulls={bulls}")
     count += 1
     if cows == 4:
