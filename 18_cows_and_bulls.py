@@ -20,7 +20,10 @@ def get_num(help_text="Guess a 4-digit number: "):
             print("Please type a 4-digit number")
             continue
         if 10000 > num > 999:
-            return num
+            if len(set(str(num))) == 4:
+                return num
+            else:
+                print("Please type a 4-digit number\nAnd all digits must be different")
         else:
             print("Please type a 4-digit number")
 
@@ -35,13 +38,13 @@ def cows_and_bulls():
             cows += 1
     print(f"cows={cows} and bulls={bulls}")
     count += 1
-    if cows == 4:
+    if bulls == 4:
         print(f"Congratulations!!!\nYou succeeded in {count}. try")
         quit()
 
 
 my_list = make_list()
-print(my_list)
+# print(my_list)
 print("Lets play Cows and bulls!\nI generated a 4-digit number. ")
 count = 0
 while True:
