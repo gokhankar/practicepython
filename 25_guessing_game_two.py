@@ -21,16 +21,17 @@ print("Pick a number between 0 and 100 in your mind\nI will try to guess it")
 start = input("Are you ready? Type 'Y' and press enter when ready: ").upper()
 while True:
     if start == "Y":
+        count = 1
         while int(len(my_list)) > 1:
             num = binary()
             print(f"Is your number: {num}?")
             y_n_answer = input("Type 'Y' for yes, type 'N'for no: ").upper()
             if y_n_answer == "Y":
-                print(f"Bingo! \nThanks for the game!")
+                print(f"Bingo! You found in {count}. try. \nThanks for the game!")
                 quit()
             elif y_n_answer == "N":
                 if int(len(my_list)) == 2:
-                    print(f"Your number is {my_list[0]}.\nBingo!")
+                    print(f"Your number is {my_list[0]}.\nBingo! You found in {count}. try.")
                     quit()
                 l_h_answer = input(f"If {num} is higher than your number type 'H', or if {num} is lower type 'L' please: ").upper()
                 if l_h_answer == "H":
@@ -40,8 +41,9 @@ while True:
             else:
                 y_n_answer = input("Type 'Y' for yes, type 'N'for no: ").upper()
             print(my_list)
+            count += 1
         if int(len(my_list)) < 2:
-            print(f"Your number is {my_list[0]} \nBingo!")
+            print(f"Your number is {my_list[0]} \nBingo! You found in {count}. try.")
             quit()
 
     else:
