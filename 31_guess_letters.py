@@ -29,11 +29,22 @@ def get_letter():
     print(printing())
     while len(letter_list) < len(list_word):
         letter = input("Type a letter please: ").upper()
-        if letter in letters not in str(letter_list) and len(letter) == 1:
-            letter_list.append(letter)
-#           print(letter_list)
-            return letter
+        if letter in letters and len(letter) == 1:
+            if letter not in all_letters:
+                all_letters.append(letter)
+                if letter in list_word:
+                    if letter not in str(letter_list):
+                        letter_list.append(letter)
+#                        print(letter_list)
+                        return letter
+                else:
+                    print(f"{letter} is not a letter of my word")
+                    break
+            else:
+                print(f"You typed {letter} previously")
+                continue
         else:
+            print("Letters are here: QWERTYUOPASDFGHJKLIZXCVBNM")
             continue
 
 
@@ -48,10 +59,22 @@ def letter_search():
             continue
 
 
-print("Lets play Hangman!\nI have a word, try to find!")
+def same_letters():
+    lw = set(list_word)
+    re_count = 0
+    for item in list_word:
+        if item in lw:
+            lw.remove(item)
+        else:
+            re_count += 1
+    return re_count
+
+
+print("I have a word, try to find!")
 word = pick_a_word()
-print(word)
+# print(word)
 letter_list = []
+all_letters = []
 list_word = list(word)
 print_screen = []
 for i in list_word:
@@ -61,9 +84,11 @@ for i in list_word:
         print_screen.append("_")
 # print(list_word)
 last_count = 0
-while len(list_word) > len(letter_list):
+r = same_letters()
+while (len(list_word) - r) > len(letter_list):
     last_count += 1
     lt = get_letter()
     letter_search()
-if len(list_word) == len(letter_list):
+if (len(list_word) - r) == len(letter_list):
+    print(printing())
     print(f"Congratulations! Bingo at {last_count}. try")
