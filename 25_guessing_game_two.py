@@ -40,11 +40,10 @@ while True:
                     del my_list[:((int(len(my_list) / 2))+1)]
             else:
                 y_n_answer = input("Type 'Y' for yes, type 'N'for no: ").upper()
-            print(my_list)
+#            print(my_list)
             count += 1
         if int(len(my_list)) < 2:
-            print(f"Your number is {my_list[0]} \nBingo! You found in {count}. try.")
+            print(f"Your number is {my_list[0]} \nBingo! I found in {count}. try.")
             quit()
-
     else:
         start = input("Are you ready? Type 'Y' and press enter when ready: ").upper()
