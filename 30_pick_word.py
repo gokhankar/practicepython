@@ -4,10 +4,9 @@ import random
 
 
 def pick_a_word():
-    file = open("sowpods.txt", "r")
-    my_list = file.readlines()
-    random_index = random.randint(1, (len(my_list)-1))
-    return my_list[random_index].replace("\n", "")
+    with open('sowpods.txt', 'r') as f:
+        my_list = f.readlines()
+    return random.choice(my_list).strip()
 
 
 picked_word = pick_a_word()
