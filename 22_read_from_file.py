@@ -8,8 +8,9 @@
 # category. To do this, you’re going to have to remember a bit about string parsing in Python 3.
 
 
-file = open("nameslist.txt", "r")
-my_list = file.readlines()
+# file = open("nameslist.txt", "r")
+with open('nameslist.txt', 'r') as file:
+    my_list = file.readlines()
 # my_set = set(my_list)                # Darth, Luke, Lea (3 Objects)
 # print(my_set)
 count_darth = 0
