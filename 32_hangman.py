@@ -41,12 +41,12 @@ def get_letter():
                 if letter in list_word:
                     if letter not in str(letter_list):
                         letter_list.append(letter)
-#                        print(letter_list)
+                        #                        print(letter_list)
                         return letter
                 else:
                     print(f"{letter} is not a letter of my word")
                     failures += 1
-                    print(f"You have only {6-failures} guesses, be careful!     \n \n{hangman_figure()} \n \n")
+                    print(f"You have only {6 - failures} guesses, be careful! \n{hangman_figure()}  \n")
                     if failures == 6:
                         print(f"My word is {word}")
                         quit()
@@ -83,17 +83,17 @@ def same_letters():
 
 def hangman_figure():
     if failures == 1:
-        return " o "
+        return " ____." + "\n" + " ¦   |" + "\n" + " o   |" + "\n" + "     |" + "\n" + "     |" + "\n" + "     |"
     elif failures == 2:
-        return " o\n" + " | "
+        return " ____." + "\n" + " ¦   |" + "\n" + " o   |" + "\n" + " |   |" + "\n" + "     |" + "\n" + "     |"
     elif failures == 3:
-        return " o\n" + "/|"
+        return " ____." + "\n" + " ¦   |" + "\n" + " o   |" + "\n" + "/|   |" + "\n" + "     |" + "\n" + "     |"
     elif failures == 4:
-        return " o\n" + "/|" + "\\"
+        return " ____." + "\n" + " ¦   |" + "\n" + " o   |" + "\n" + "/|\  |" + "\n" + "     |" + "\n" + "     |"
     elif failures == 5:
-        return " o\n" + "/|" + "\\" + "\n" + "/ "
+        return " ____." + "\n" + " ¦   |" + "\n" + " o   |" + "\n" + "/|\  |" + "\n" + "/    | " + "\n" + "     |"
     elif failures == 6:
-        return " o\n" + "/|" + "\\" + "\n" + "/ " + "\\" "\n You died!!!"
+        return " ____." + "\n" + " ¦   |" + "\n" + " o   |" + "\n" + "/|\  |" + "\n" + "/ \  | " + "\n" + "     |" + "You died!!! "
 
 
 print("Lets play Hangman!\nI have a word, try to find!\nDo not forget that you can make only 6 failures!")
