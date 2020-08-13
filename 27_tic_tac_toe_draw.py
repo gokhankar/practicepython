@@ -3,6 +3,7 @@
 # by asking the user for a coordinate of where they want to place their piece. The computer asks Player 1 (X)
 # what their move is (in the format row,col), and say they type 1,3. Then the game would print out
 # and ask Player 2 for their move, printing an O in that place.
+
 class Player:
     def __init__(self, name, symbol):
         self.name = name
@@ -14,13 +15,27 @@ player_2 = Player("Player 2", "O")
 
 
 def get_row():
-    row = int(input("Type your move(row): "))
-    return row
+    while True:
+        try:
+            row = int(input("Type your move(ROW): "))
+        except:
+            print("Type a number please")
+        if 0 < row < 4:
+            return row
+        else:
+            continue
 
 
 def get_col():
-    col = int(input("Type your move(col): "))
-    return col
+    while True:
+        try:
+            col = int(input("Type your move(COLUMN): "))
+        except:
+            print("Type a number please")
+        if 0 < col <4:
+            return col
+        else:
+            continue
 
 
 def print_game():
@@ -46,45 +61,45 @@ def print_situation(row, col):
             if col == 1:
                 a11 = "X"
             elif col == 2:
-                a11 = "X"
+                a12 = "X"
             elif col == 3:
-                a11 = "X"
+                a13 = "X"
         elif row == 2:
             if col == 1:
-                a11 = "X"
+                a21 = "X"
             elif col == 2:
-                a11 = "X"
+                a22 = "X"
             elif col == 3:
-                a11 = "X"
+                a23 = "X"
         elif row == 3:
             if col == 1:
-                a11 = "X"
+                a31 = "X"
             elif col == 2:
-                a11 = "X"
+                a32 = "X"
             elif col == 3:
-                a11 = "X"
+                a33 = "X"
     elif which_player() == player_2:
         if row == 1:
             if col == 1:
                 a11 = "O"
             elif col == 2:
-                a11 = "O"
+                a12 = "O"
             elif col == 3:
-                a11 = "O"
+                a13 = "O"
         elif row == 2:
             if col == 1:
-                a11 = "O"
+                a21 = "O"
             elif col == 2:
-                a11 = "O"
+                a22 = "O"
             elif col == 3:
-                a11 = "O"
+                a23 = "O"
         elif row == 3:
             if col == 1:
-                a11 = "O"
+                a31 = "O"
             elif col == 2:
-                a11 = "O"
+                a32 = "O"
             elif col == 3:
-                a11 = "O"
+                a33 = "O"
 
 
 def which_player():
@@ -92,6 +107,42 @@ def which_player():
         return player_1
     elif count % 2 == 0:
         return player_2
+
+
+def control_game():
+    if game[0][0] == 1 and game[0][1] == 1 and game[0][2] == 1:
+        return 1
+    elif game[0][0] == 2 and game[0][1] == 2 and game[0][2] == 2:
+        return 2
+    elif game[1][0] == 1 and game[1][1] == 1 and game[1][2] == 1:
+        return 1
+    elif game[1][0] == 2 and game[1][1] == 2 and game[1][2] == 2:
+        return 2
+    elif game[2][0] == 1 and game[2][1] == 1 and game[2][2] == 1:
+        return 1
+    elif game[2][0] == 2 and game[2][1] == 2 and game[2][2] == 2:
+        return 2
+    elif game[0][0] == 1 and game[1][0] == 1 and game[2][0] == 1:
+        return 1
+    elif game[0][0] == 2 and game[1][0] == 2 and game[2][0] == 2:
+        return 2
+    elif game[0][1] == 1 and game[1][1] == 1 and game[2][1] == 1:
+        return 1
+    elif game[0][1] == 2 and game[1][1] == 2 and game[2][1] == 2:
+        return 2
+    elif game[0][2] == 1 and game[1][2] == 1 and game[2][2] == 1:
+        return 1
+    elif game[0][2] == 2 and game[1][2] == 2 and game[2][2] == 2:
+        return 2
+    elif game[0][0] == 1 and game[1][1] == 1 and game[2][2] == 1:
+        return 1
+    elif game[0][0] == 2 and game[1][1] == 2 and game[2][2] == 2:
+        return 2
+    elif game[0][2] == 1 and game[1][1] == 1 and game[2][0] == 1:
+        return 1
+    elif game[0][2] == 2 and game[1][1] == 2 and game[2][0] == 2:
+        return 2
+
 
 
 game = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -111,4 +162,17 @@ while True:
     print_situation(row, col)
     print(game)
     print_game()
+    if control_game() == 1:
+        print("Player 1 won! Congratulations!")
+        quit()
+    elif control_game() == 2:
+        print("Player 2 won! Congratulations!")
+        quit()
+    element_list = []
+    for item in game:
+        for elem in item:
+            element_list.append(elem)
+    if 0 not in element_list:
+        print("Game Over! It is a tie!")
+        quit()
     count += 1
