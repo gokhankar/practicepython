@@ -10,16 +10,13 @@ class Player:
         self.symbol = symbol
 
 
-player_1 = Player("Player 1", "X")
-player_2 = Player("Player 2", "O")
-
-
 def get_row():
     while True:
         try:
             row = int(input("Type your move(ROW): "))
         except:
             print("Type a number please")
+            continue
         if 0 < row < 4:
             return row
         else:
@@ -32,6 +29,7 @@ def get_col():
             col = int(input("Type your move(COLUMN): "))
         except:
             print("Type a number please")
+            continue
         if 0 < col <4:
             return col
         else:
@@ -47,10 +45,10 @@ def print_game():
 def game_situation(row, col):
     if which_player() == player_1:
         game[row - 1][col - 1] = 1
-    #       ("a"+ row + coll) = "X"
+#       ("a"+ row + coll) = "X"
     elif which_player() == player_2:
         game[row - 1][col - 1] = 2
-        print(game)
+#        print(game)
     return game
 
 
@@ -144,7 +142,8 @@ def control_game():
         return 2
 
 
-
+player_1 = Player("Player 1", "X")
+player_2 = Player("Player 2", "O")
 game = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 a11, a12, a13, a21, a22, a23, a31, a32, a33 = " ", " ", " ", " ", " ", " ", " ", " ", " ",
 print("Lets play Tic Tac Toe!")
@@ -160,7 +159,7 @@ while True:
     col = get_col()
     game_situation(row, col)
     print_situation(row, col)
-    print(game)
+#    print(game)
     print_game()
     if control_game() == 1:
         print("Player 1 won! Congratulations!")
