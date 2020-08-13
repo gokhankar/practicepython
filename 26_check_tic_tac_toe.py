@@ -52,6 +52,8 @@ def find_winner():
 
 
 game = [[1, 2, 0], [2, 1, 0], [2, 1, 0]]
-
-
-print(find_winner())
+result = find_winner()
+if result == 1 or result == 2:
+    print(f"Player {find_winner()} is the winner")
+else:
+    print("It is a draw!")
